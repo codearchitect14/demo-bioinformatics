@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: genomics-data-pipeline
+Version: 1.0.0
+Summary: AI-Powered Genomics Platform Data Pipeline System
+Author: GenomicsAI Team
+Requires-Python: >=3.8

@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: genomics_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: genomics_platform
+      POSTGRES_USER: genomics_user
+      POSTGRES_PASSWORD: Boolmind2025@@
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - genomics_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: genomics_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - genomics_network
+
+  minio:
+    image: minio/minio:latest
+    container_name: genomics_minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - genomics_network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
+
+networks:
+  genomics_network:
+    driver: bridge 

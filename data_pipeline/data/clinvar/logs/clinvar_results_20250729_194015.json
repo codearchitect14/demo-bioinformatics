@@ -1,0 +1,22 @@
+{
+  "results": {
+    "dataset_name": "clinvar",
+    "status": "failed",
+    "error": "Download failed for variants",
+    "start_time": "2025-07-29T19:25:10.925489",
+    "end_time": "2025-07-29T19:40:15.029556",
+    "duration_seconds": 904.104067,
+    "total_records": 0,
+    "processed_records": 0,
+    "failed_records": 0,
+    "validation_errors": 0
+  },
+  "summary": {
+    "dataset_name": "clinvar",
+    "total_variants": 0,
+    "clinical_significance_distribution": {},
+    "gene_distribution": {},
+    "chromosome_distribution": {}
+  },
+  "timestamp": "2025-07-29T19:40:15.031605"
+}
