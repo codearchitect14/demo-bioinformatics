@@ -17,7 +17,7 @@ import logging
 # Import database and models
 from app.database import engine, get_db, Base
 from app.models import Dataset, Variant, Sample, GeneExpression, LiteratureEntity, DrugTarget
-from app.api.v1 import datasets, variants, samples, drugs, health
+from app.api.v1 import datasets, variants, samples, drugs, health, ml_predictions
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -68,6 +68,7 @@ app.include_router(datasets.router, prefix="/api/v1", tags=["Datasets"])
 app.include_router(variants.router, prefix="/api/v1", tags=["Variants"])
 app.include_router(samples.router, prefix="/api/v1", tags=["Samples"])
 app.include_router(drugs.router, prefix="/api/v1", tags=["Drugs"])
+app.include_router(ml_predictions.router, prefix="/api/v1", tags=["ML Predictions"])
 
 
 @app.get("/")

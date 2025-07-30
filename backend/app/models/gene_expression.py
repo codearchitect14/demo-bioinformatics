@@ -5,7 +5,7 @@ Gene Expression Model
 SQLAlchemy model for gene_expression table in the genomics platform.
 """
 
-from sqlalchemy import Column, String, Float, DateTime, JSON, ForeignKey, Index
+from sqlalchemy import Column, String, Float, DateTime, ForeignKey, Index
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
@@ -33,12 +33,8 @@ class GeneExpression(Base):
     expression_unit = Column(String(50))  # TPM, FPKM, counts, etc.
     measurement_type = Column(String(100))  # RNA-seq, microarray, etc.
     
-    # Additional metadata
-    meta_data = Column(JSON)
-    
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     # Relationships
     dataset = relationship("Dataset", back_populates="gene_expressions")
@@ -64,7 +60,5 @@ class GeneExpression(Base):
             "expression_value": self.expression_value,
             "expression_unit": self.expression_unit,
             "measurement_type": self.measurement_type,
-            "meta_data": self.meta_data,
-            "created_at": self.created_at.isoformat() if self.created_at else None,
-            "updated_at": self.updated_at.isoformat() if self.updated_at else None
+            "created_at": self.created_at.isoformat() if self.created_at else None
         } 

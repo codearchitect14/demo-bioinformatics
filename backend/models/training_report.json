@@ -1,0 +1,33 @@
+{
+  "training_summary": {
+    "total_models_trained": 3,
+    "models": [
+      "variant_predictor",
+      "drug_response",
+      "biomarker_discovery"
+    ],
+    "timestamp": "2025-07-30T17:50:05.696799"
+  },
+  "model_performance": {
+    "variant_predictor": {
+      "rf_accuracy": 1.0,
+      "nn_accuracy": 1.0,
+      "overall_accuracy": 1.0
+    },
+    "drug_response": {
+      "r2_score": 0.951701091797971,
+      "mse": 0.014176280243581469,
+      "rmse": 0.11906418539418757
+    },
+    "biomarker_discovery": {
+      "r2_score": 0.9996666666666666,
+      "mse": 3.200000000000361e-06,
+      "rmse": 0.0017888543819999326
+    }
+  },
+  "recommendations": [
+    "variant_predictor: Excellent performance (Accuracy: 1.000)",
+    "drug_response: Excellent performance (R\u00b2: 0.952)",
+    "biomarker_discovery: Excellent performance (R\u00b2: 1.000)"
+  ]
+}

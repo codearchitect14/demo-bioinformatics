@@ -44,7 +44,6 @@ class Variant(Base):
     
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     # Relationships
     dataset = relationship("Dataset", back_populates="variants")
@@ -72,8 +71,7 @@ class Variant(Base):
             "quality_score": self.quality_score,
             "allele_frequency": self.allele_frequency,
             "annotations": self.annotations,
-            "created_at": self.created_at.isoformat() if self.created_at else None,
-            "updated_at": self.updated_at.isoformat() if self.updated_at else None
+            "created_at": self.created_at.isoformat() if self.created_at else None
         }
     
     @property

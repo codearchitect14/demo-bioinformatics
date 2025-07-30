@@ -1,0 +1,17 @@
+{
+  "variant_predictor": {
+    "rf_accuracy": 1.0,
+    "nn_accuracy": 1.0,
+    "overall_accuracy": 1.0
+  },
+  "drug_response": {
+    "r2_score": 0.951701091797971,
+    "mse": 0.014176280243581469,
+    "rmse": 0.11906418539418757
+  },
+  "biomarker_discovery": {
+    "r2_score": 0.9996666666666666,
+    "mse": 3.200000000000361e-06,
+    "rmse": 0.0017888543819999326
+  }
+}

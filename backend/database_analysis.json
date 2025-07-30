@@ -1,0 +1,624 @@
+{
+  "variants": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "dataset_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "chromosome",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "position",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "reference_allele",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "alternate_allele",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "variant_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "quality_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "allele_frequency",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "pathogenicity_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "clinical_significance",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "annotations",
+        "type": "jsonb",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      }
+    ],
+    "count": 31145,
+    "sample_data": [
+      [
+        "883a4c13-7747-4c50-9164-b6ed0f4cc60c",
+        "511a6d31-8022-49fe-a3ef-b59c27dcc92f",
+        "chr1",
+        69091,
+        "A",
+        "G",
+        "SNP",
+        "100.0",
+        "0.001",
+        "0.8",
+        "pathogenic",
+        {
+          "gene": "OR4F5",
+          "rs_id": "rs775809821",
+          "phenotype": "Autosomal dominant disease"
+        },
+        "2025-07-29 14:47:03.771838"
+      ],
+      [
+        "6b8285c9-2080-40a8-9481-28ae9a0e9eb0",
+        "511a6d31-8022-49fe-a3ef-b59c27dcc92f",
+        "chr2",
+        169519049,
+        "C",
+        "T",
+        "SNP",
+        "95.0",
+        "0.002",
+        "0.6",
+        "likely_pathogenic",
+        {
+          "gene": "APOB",
+          "rs_id": "rs5742904",
+          "phenotype": "Familial hypercholesterolemia"
+        },
+        "2025-07-29 14:47:03.771838"
+      ],
+      [
+        "9aa2bf35-edf7-45a6-ad02-c1dc42d2e22f",
+        "511a6d31-8022-49fe-a3ef-b59c27dcc92f",
+        "chr7",
+        117199644,
+        "G",
+        "A",
+        "SNP",
+        "98.0",
+        "0.0005",
+        "0.9",
+        "pathogenic",
+        {
+          "gene": "CFTR",
+          "rs_id": "rs113993960",
+          "phenotype": "Cystic fibrosis"
+        },
+        "2025-07-29 14:47:03.771838"
+      ]
+    ]
+  },
+  "gene_expression": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "dataset_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "sample_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "gene_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "gene_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "expression_value",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "expression_unit",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "measurement_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      }
+    ],
+    "count": 96,
+    "sample_data": [
+      [
+        "5333cbd0-cac6-4ec8-9f6d-a46d1e0e3c97",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "60cd71a9-3b99-41f8-a2ea-7ff6a4bfb610",
+        "BRCA1",
+        "BRCA1",
+        "2.4103519930671555",
+        "FPKM",
+        "RNA-seq",
+        "2025-07-29 14:48:36.399051"
+      ],
+      [
+        "7a863210-f62e-40d0-8720-907bf4de1ea8",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "60cd71a9-3b99-41f8-a2ea-7ff6a4bfb610",
+        "BRCA2",
+        "BRCA2",
+        "7.864581360622447",
+        "FPKM",
+        "RNA-seq",
+        "2025-07-29 14:48:36.399051"
+      ],
+      [
+        "d9fed22c-e3ee-42bf-ae3e-6147dd15e7fa",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "60cd71a9-3b99-41f8-a2ea-7ff6a4bfb610",
+        "TP53",
+        "TP53",
+        "7.758879018585043",
+        "FPKM",
+        "RNA-seq",
+        "2025-07-29 14:48:36.399051"
+      ]
+    ]
+  },
+  "drug_targets": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "drug_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "drug_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "target_gene",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "target_protein",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "interaction_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "binding_affinity",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      }
+    ],
+    "count": 66,
+    "sample_data": [
+      [
+        "57a16f14-0e52-43cf-9bb1-5bb279f3141d",
+        "DB00316",
+        "Olaparib",
+        "BRCA1",
+        "BRCA1",
+        "inhibitor",
+        "0.001",
+        "DrugBank",
+        "2025-07-29 14:49:59.529336"
+      ],
+      [
+        "d884e4c7-b18e-44cc-a54a-43fc02161dd2",
+        "DB01234",
+        "Trastuzumab",
+        "ERBB2",
+        "HER2",
+        "antibody",
+        "0.0001",
+        "DrugBank",
+        "2025-07-29 14:49:59.529336"
+      ],
+      [
+        "84150504-2d24-4cd7-807d-7f816397ca75",
+        "DB00567",
+        "Imatinib",
+        "BCR",
+        "BCR-ABL",
+        "inhibitor",
+        "0.0005",
+        "DrugBank",
+        "2025-07-29 14:49:59.529336"
+      ]
+    ]
+  },
+  "literature_entities": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "pmid",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "abstract",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "entity_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "entity_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "entity_id",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "confidence_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      }
+    ],
+    "count": 69,
+    "sample_data": [
+      [
+        "97fe08e7-7201-4a8a-b43a-1f518a487bfa",
+        "12345678",
+        "BRCA1 and BRCA2 mutations in breast cancer: A comprehensive review",
+        "This study examines the role of BRCA1 and BRCA2 mutations in hereditary breast cancer...",
+        "gene",
+        "BRCA1",
+        "BRCA1",
+        "0.95",
+        "PUBMED",
+        "2025-07-29 14:49:22.457234"
+      ],
+      [
+        "e6eeab5c-4d7f-4137-96d0-37154555a486",
+        "23456789",
+        "TP53 mutations in cancer: From molecular mechanisms to therapeutic targets",
+        "TP53 is the most frequently mutated gene in human cancer...",
+        "gene",
+        "TP53",
+        "TP53",
+        "0.92",
+        "PUBMED",
+        "2025-07-29 14:49:22.457234"
+      ],
+      [
+        "eafb4efc-ac0f-44df-811e-68316ed5da46",
+        "34567890",
+        "Novel drug targets in precision oncology: A systematic review",
+        "Precision oncology aims to match targeted therapies to specific genetic alterations...",
+        "drug",
+        "PARP inhibitor",
+        "PARP_inhibitor",
+        "0.88",
+        "PUBMED",
+        "2025-07-29 14:49:22.457234"
+      ]
+    ]
+  },
+  "samples": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "dataset_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "sample_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "external_id",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "sample_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "tissue_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "disease_type",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "age",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "gender",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "ethnicity",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "metadata",
+        "type": "jsonb",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      }
+    ],
+    "count": 177,
+    "sample_data": [
+      [
+        "60cd71a9-3b99-41f8-a2ea-7ff6a4bfb610",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "TCGA-02-0001",
+        "TCGA-02-0001",
+        "tumor",
+        "breast",
+        "breast_cancer",
+        45,
+        "female",
+        null,
+        {
+          "stage": "IIA",
+          "er_status": "positive",
+          "pr_status": "positive",
+          "her2_status": "negative",
+          "tumor_grade": "2",
+          "survival_days": 1200
+        },
+        "2025-07-29 14:48:36.385356"
+      ],
+      [
+        "97d2506b-3604-4ac9-928d-feb6e4b20364",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "TCGA-02-0002",
+        "TCGA-02-0002",
+        "normal",
+        "breast",
+        "breast_cancer",
+        45,
+        "female",
+        null,
+        {
+          "stage": "IIA",
+          "er_status": "positive",
+          "pr_status": "positive",
+          "her2_status": "negative",
+          "tumor_grade": "2",
+          "survival_days": 1200
+        },
+        "2025-07-29 14:48:36.385356"
+      ],
+      [
+        "3cea64fe-c1c6-41d9-8a3b-409f75f3b0d6",
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "TCGA-06-0125",
+        "TCGA-06-0125",
+        "tumor",
+        "brain",
+        "glioblastoma",
+        62,
+        "male",
+        null,
+        {
+          "stage": "IV",
+          "idh_status": "wildtype",
+          "mgmt_status": "methylated",
+          "tumor_grade": "4",
+          "survival_days": 450
+        },
+        "2025-07-29 14:48:36.385356"
+      ]
+    ]
+  },
+  "datasets": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "version",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "total_samples",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "total_variants",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "file_size_bytes",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "nullable": "YES"
+      }
+    ],
+    "count": 7,
+    "sample_data": [
+      [
+        "511a6d31-8022-49fe-a3ef-b59c27dcc92f",
+        "ClinVar Variants",
+        "CLINVAR",
+        "Clinical variant database with pathogenicity annotations",
+        "1.0",
+        0,
+        25,
+        null,
+        "2025-07-29 14:06:51.496090",
+        "2025-07-29 15:45:00.456401",
+        true
+      ],
+      [
+        "35f844b6-2a00-44cf-aa1e-c9fecb99187d",
+        "TCGA Breast Cancer",
+        "TCGA",
+        "The Cancer Genome Atlas Breast Cancer dataset",
+        "1.0",
+        12,
+        0,
+        null,
+        "2025-07-29 14:06:51.496090",
+        "2025-07-29 15:45:00.456401",
+        true
+      ],
+      [
+        "9a554185-def2-438d-918e-4478c22d3271",
+        "PubMed Genomics Literature",
+        "PUBMED",
+        "Biomedical literature for genomics research",
+        "1.0",
+        0,
+        0,
+        null,
+        "2025-07-29 14:06:51.496090",
+        "2025-07-29 15:45:00.456401",
+        true
+      ]
+    ]
+  }
+}
