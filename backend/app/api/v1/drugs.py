@@ -65,14 +65,41 @@ async def get_drugs(
         # Apply pagination
         drugs = query.offset(skip).limit(limit).all()
         
+        # Transform drugs to frontend format with response predictions
+        items = []
+        for drug in drugs:
+            drug_dict = drug.to_dict()
+            
+            # Calculate response prediction based on binding affinity
+            binding_affinity = float(drug_dict['binding_affinity']) if drug_dict['binding_affinity'] else 1.0
+            response_score = max(0.1, min(0.9, 1.0 - (binding_affinity * 100)))  # Lower affinity = higher response
+            
+            # Determine response category
+            if response_score >= 0.7:
+                response_prediction = "High"
+            elif response_score >= 0.4:
+                response_prediction = "Medium"
+            else:
+                response_prediction = "Low"
+            
+            items.append({
+                'id': drug_dict['id'],
+                'drug_name': drug_dict['drug_name'],
+                'target_protein': drug_dict['target_protein'],
+                'binding_affinity': float(drug_dict['binding_affinity']) if drug_dict['binding_affinity'] else None,
+                'prediction_score': round(response_score, 3),
+                'response_prediction': response_prediction,
+                'source': drug_dict['source'],
+                'target_gene': drug_dict['target_gene'],
+                'interaction_type': drug_dict['interaction_type']
+            })
+        
         return {
-            "drugs": [drug.to_dict() for drug in drugs],
-            "pagination": {
-                "skip": skip,
-                "limit": limit,
-                "total": total,
-                "has_more": skip + limit < total
-            }
+            "items": items,
+            "total": total,
+            "skip": skip,
+            "limit": limit,
+            "has_more": skip + limit < total
         }
     except Exception as e:
         logger.error(f"Failed to get drugs: {e}")

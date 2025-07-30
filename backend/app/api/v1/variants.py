@@ -75,14 +75,36 @@ async def get_variants(
         # Apply pagination and ordering
         variants = query.order_by(Variant.chromosome, Variant.position).offset(skip).limit(limit).all()
         
+        # Transform variants to frontend format
+        items = []
+        for variant in variants:
+            variant_dict = variant.to_dict()
+            # Extract gene name from metadata if available
+            gene_name = None
+            if variant_dict.get('metadata') and isinstance(variant_dict['metadata'], dict):
+                gene_name = variant_dict['metadata'].get('gene')
+            
+            items.append({
+                'id': variant_dict['id'],
+                'chromosome': variant_dict['chromosome'],
+                'position': variant_dict['position'],
+                'ref_allele': variant_dict['reference_allele'],
+                'alt_allele': variant_dict['alternate_allele'],
+                'impact': variant_dict['clinical_significance'],
+                'gene': gene_name or 'Unknown',
+                'quality_score': float(variant_dict['quality_score']) if variant_dict['quality_score'] else None,
+                'allele_frequency': float(variant_dict['allele_frequency']) if variant_dict['allele_frequency'] else None,
+                'variant_type': variant_dict['variant_type'],
+                'clinical_significance': variant_dict['clinical_significance'],
+                'metadata': variant_dict.get('metadata', {})
+            })
+        
         return {
-            "variants": [variant.to_dict() for variant in variants],
-            "pagination": {
-                "skip": skip,
-                "limit": limit,
-                "total": total,
-                "has_more": skip + limit < total
-            }
+            "items": items,
+            "total": total,
+            "skip": skip,
+            "limit": limit,
+            "has_more": skip + limit < total
         }
     except Exception as e:
         logger.error(f"Failed to get variants: {e}")

@@ -5,7 +5,7 @@ Drug Target Model
 SQLAlchemy model for drug_targets table in the genomics platform.
 """
 
-from sqlalchemy import Column, String, Float, DateTime, JSON, Index
+from sqlalchemy import Column, String, Float, DateTime, Index
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
@@ -35,12 +35,8 @@ class DrugTarget(Base):
     # Source information
     source = Column(String(100), index=True)  # DrugBank, ChEMBL, etc.
     
-    # Additional metadata
-    meta_data = Column(JSON)
-    
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     def __repr__(self):
         return f"<DrugTarget(drug='{self.drug_name}', target='{self.target_protein}')>"
@@ -56,7 +52,5 @@ class DrugTarget(Base):
             "interaction_type": self.interaction_type,
             "binding_affinity": self.binding_affinity,
             "source": self.source,
-            "meta_data": self.meta_data,
-            "created_at": self.created_at.isoformat() if self.created_at else None,
-            "updated_at": self.updated_at.isoformat() if self.updated_at else None
+            "created_at": self.created_at.isoformat() if self.created_at else None
         } 

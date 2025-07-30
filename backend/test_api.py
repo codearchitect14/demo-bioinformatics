@@ -5,66 +5,76 @@ Test script for the Genomics Platform API
 
 import requests
 import json
-import time
 
-def test_api():
-    """Test the API endpoints."""
-    base_url = "http://127.0.0.1:8000"
+def test_api_endpoints():
+    base_url = "http://localhost:8000/api/v1"
     
-    print("🧬 Testing Genomics Platform API")
+    print("🧪 Testing API Endpoints...")
     print("=" * 50)
-    
-    # Test root endpoint
-    try:
-        response = requests.get(f"{base_url}/")
-        print(f"✅ Root endpoint: {response.status_code}")
-        print(f"   Response: {json.dumps(response.json(), indent=2)}")
-    except Exception as e:
-        print(f"❌ Root endpoint failed: {e}")
-    
-    print()
-    
-    # Test health endpoint
-    try:
-        response = requests.get(f"{base_url}/api/v1/health")
-        print(f"✅ Health endpoint: {response.status_code}")
-        print(f"   Response: {json.dumps(response.json(), indent=2)}")
-    except Exception as e:
-        print(f"❌ Health endpoint failed: {e}")
-    
-    print()
-    
-    # Test datasets endpoint
-    try:
-        response = requests.get(f"{base_url}/api/v1/datasets")
-        print(f"✅ Datasets endpoint: {response.status_code}")
-        data = response.json()
-        print(f"   Found {len(data.get('datasets', []))} datasets")
-        print(f"   Total: {data.get('pagination', {}).get('total', 0)}")
-    except Exception as e:
-        print(f"❌ Datasets endpoint failed: {e}")
-    
-    print()
     
     # Test variants endpoint
     try:
-        response = requests.get(f"{base_url}/api/v1/variants?limit=5")
-        print(f"✅ Variants endpoint: {response.status_code}")
-        data = response.json()
-        print(f"   Found {len(data.get('variants', []))} variants")
-        print(f"   Total: {data.get('pagination', {}).get('total', 0)}")
+        response = requests.get(f"{base_url}/variants?limit=5")
+        print(f"✅ Variants API: {response.status_code}")
+        if response.status_code == 200:
+            data = response.json()
+            print(f"   Total: {data.get('total', 'N/A')}")
+            print(f"   Items: {len(data.get('items', []))}")
+            if data.get('items'):
+                print(f"   Sample variant: {data['items'][0].get('gene', 'N/A')} - {data['items'][0].get('chromosome', 'N/A')}:{data['items'][0].get('position', 'N/A')}")
+        else:
+            print(f"   Error: {response.text}")
     except Exception as e:
-        print(f"❌ Variants endpoint failed: {e}")
+        print(f"❌ Variants API Error: {e}")
     
     print()
     
-    # Test API info endpoint
+    # Test drugs endpoint
     try:
-        response = requests.get(f"{base_url}/api/v1")
-        print(f"✅ API info endpoint: {response.status_code}")
-        print(f"   Response: {json.dumps(response.json(), indent=2)}")
+        response = requests.get(f"{base_url}/drugs?limit=5")
+        print(f"✅ Drugs API: {response.status_code}")
+        if response.status_code == 200:
+            data = response.json()
+            print(f"   Total: {data.get('total', 'N/A')}")
+            print(f"   Items: {len(data.get('items', []))}")
+            if data.get('items'):
+                print(f"   Sample drug: {data['items'][0].get('drug_name', 'N/A')} -> {data['items'][0].get('target_protein', 'N/A')}")
+        else:
+            print(f"   Error: {response.text}")
     except Exception as e:
-        print(f"❌ API info endpoint failed: {e}")
+        print(f"❌ Drugs API Error: {e}")
+    
+    print()
+    
+    # Test gene expression endpoint
+    try:
+        response = requests.get(f"{base_url}/gene-expression?limit=5")
+        print(f"✅ Gene Expression API: {response.status_code}")
+        if response.status_code == 200:
+            data = response.json()
+            print(f"   Total: {data.get('total', 'N/A')}")
+            print(f"   Items: {len(data.get('items', []))}")
+            if data.get('items'):
+                print(f"   Sample gene: {data['items'][0].get('gene_symbol', 'N/A')} - Expression: {data['items'][0].get('expression_level', 'N/A')}")
+        else:
+            print(f"   Error: {response.text}")
+    except Exception as e:
+        print(f"❌ Gene Expression API Error: {e}")
+    
+    print()
+    
+    # Test ML model status
+    try:
+        response = requests.get(f"{base_url}/models/status")
+        print(f"✅ ML Models Status: {response.status_code}")
+        if response.status_code == 200:
+            data = response.json()
+            print(f"   Models loaded: {data.get('models_loaded', 'N/A')}")
+            print(f"   Total models: {data.get('total_models', 'N/A')}")
+        else:
+            print(f"   Error: {response.text}")
+    except Exception as e:
+        print(f"❌ ML Models Status Error: {e}")
 
 if __name__ == "__main__":
-    test_api() 
+    test_api_endpoints() 
